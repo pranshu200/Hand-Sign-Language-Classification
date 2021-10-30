@@ -35,7 +35,7 @@ A feature descriptor is a representation of an image or an image patch that simp
 
 Hog is a feature descriptor that calculates a histogram of gradient for the image pixels, which is a vector of 9 bins (numbers ) corresponding to the angles: 0, 20, 40, 60... 160. The images are divided into cells, (usually, 8x8 ), and for each cell, gradient magnitude and gradient angle is calculated, using which a histogram is created for a cell. The histogram of a block of cells is normalized, and the final feature vector for the entire image is calculated.
 
-#gTTS (Google Text To Speech):
+# gTTS (Google Text To Speech):
 
 Google Text-to-Speech is a screen reader application developed by Google for the Android operating system. It powers applications to read aloud the text on the screen with support for many languages.<br>
 gTTS (Google Text-to-Speech)is a Python library and CLI tool to interface with Google Translate text-to-speech API, save function allows us to save the converted speech in a format that allows us to play sounds. It saves the file in .mp3 format.
