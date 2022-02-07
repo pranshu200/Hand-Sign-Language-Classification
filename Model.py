@@ -44,7 +44,7 @@ def classifier_model():
     model.add(Dropout(0.25))
 
     # adding the output layer
-    model.add(Dense(29, activation='softmax' , kernel_initializer='random_normal'))
+    model.add(Dense(15, activation='softmax' , kernel_initializer='random_normal'))
 
     # model compilation + optimizer and loss function specifications.
     # opt = keras.optimizers.Adam(learning_rate=0.01)
