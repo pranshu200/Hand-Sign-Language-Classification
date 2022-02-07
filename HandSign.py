@@ -21,12 +21,12 @@ print("----Folder Loaded----")
 os.listdir()
 #%%
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
-training_path= 'C:/PRANSHU\PROJECTS/Hand-Sign-Language-Classification\Dataset/asl_alphabet_train'
-testing_path= 'C:/PRANSHU\PROJECTS/Hand-Sign-Language-Classification\Dataset/asl_alphabet_test'
+training_path= 'C:/PRANSHU\PROJECTS/Hand-Sign-Language-Classification/NewDataset\Train-Dataset'
+validation_path= 'C:/PRANSHU\PROJECTS/Hand-Sign-Language-Classification/NewDataset\Validation-Dataset'
 train_datagen = ImageDataGenerator()
 val_datagen = ImageDataGenerator(rescale=1./255)
 training_set = train_datagen.flow_from_directory(training_path,target_size=(64,64),batch_size=10,class_mode='categorical')
-test_set = val_datagen.flow_from_directory(testing_path,target_size=(64,64),batch_size=10,class_mode='categorical')
+validation_set = val_datagen.flow_from_directory(validation_path,target_size=(64,64),batch_size=10,class_mode='categorical')
 print("Dataset Loaded")
 #%%
 
@@ -43,11 +43,10 @@ plot_model(model, to_file='CNN_Layers.png')
 with tf.device('/GPU:0'):
     history = model.fit(
         training_set,
-        steps_per_epoch=87000//50,
-        epochs=10, 
-        verbose=1,
-        validation_data = test_set,
-        validation_steps=29//1
+        steps_per_epoch=3750//25,
+        epochs=50,
+        validation_data = validation_set,
+        validation_steps=600/25
         #callbacks=[earlystopping]
     )
 #%%
@@ -96,6 +95,15 @@ def process_image(path):
 
 path1 = 'C:/PRANSHU/PROJECTS/Hand-Sign-Language-Classification/images.jpg'
 img_original1 = load_img(path1)
+
+#%%
+l=[]
+path = 'C:\PRANSHU\PROJECTS\Hand-Sign-Language-Classification/NewDataset\Train-Dataset'
+files = os.listdir(path)
+for f in files:
+    l.append(f)
+print("\nNames of Classes")
+print(l)
 #%%
 pred1 = model.predict(process_image(path1))
 
@@ -103,4 +111,6 @@ print(pred1)
 
 a=np.argmax(pred1,axis=1)
 print(a)
+#max_index=pred1.index(max_value)
+#print(l[max_index])
 #%%
