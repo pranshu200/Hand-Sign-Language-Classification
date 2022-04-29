@@ -38,7 +38,7 @@ print('Total number of files',totalFiles)
 print('Total Number of directories',totalDir)
 # %%
 #Create new Directories
-new_dataset='C:\PRANSHU\PROJECTS\Hand-Sign-Language-Classification/Dataset2'
+new_dataset='C:\PRANSHU\PROJECTS\Hand-Sign-Language-Classification/DATASET2'
 os.mkdir(new_dataset)
 
 #Under the Dataset2 folders create folders for all the classes
@@ -77,7 +77,7 @@ cv2.waitKey(0)
 
 # %%
 #Increasing the Dataset
-new_dir='C:\PRANSHU\PROJECTS\Hand-Sign-Language-Classification\Dataset2'
+new_dir='C:\PRANSHU\PROJECTS\Hand-Sign-Language-Classification\DATASET2'
 for label in l:
     input_path =Path + '//' +label
     count=1
@@ -113,3 +113,29 @@ for label in l:
         cv2.imwrite(temp,dark_img4)
 
 #%%
+#TestSet
+test_dataset='C:\PRANSHU\PROJECTS\Hand-Sign-Language-Classification/TESTSET'
+os.mkdir(test_dataset)
+for i in l:
+    temp=os.path.join(test_dataset,i)
+    os.mkdir(temp)
+#%%
+count=200
+for label in l:
+    input_path =Path + '//' +label
+    for imgnum in range(200,210,1):
+        image_path=input_path+'//'+label+str(imgnum)+'.jpg'
+        img=cv2.imread(image_path)
+        cropped_img=img[80:400,140:460]
+        resized_img=cv2.resize(cropped_img,(200,200)) #Resized Image
+        mat1=np.ones(resized_img.shape,dtype="uint8")*30
+        mat2=np.ones(resized_img.shape,dtype="uint8")*50
+        dark_img1=cv2.subtract(resized_img,mat1) #Dark Resized Image
+        dark_img2=cv2.subtract(resized_img,mat2) #Darker Resized Image
+        flipped_img = cv2.flip(resized_img, 1) #Flipped Image
+        dark_img3=cv2.subtract(flipped_img,mat1) #Dark Flipped Image
+        dark_img4=cv2.subtract(flipped_img,mat2) #Darker Flipped Image
+        temp= os.path.join(test_dataset,label,label+'{}.jpg'.format(str(count)))
+        count+=1
+        cv2.imwrite(temp, resized_img)
+# %%
