@@ -15,7 +15,7 @@ if not os.path.exists("DATASET1"):
     os.makedirs("DATASET1")
 Img_PATH = 'C:\PRANSHU\PROJECTS\Hand-Sign-Language-Classification\DATASET1'
 
-labels = ['ThumbsUp','Hello','ThumbsDown','Thanks','ILoveYou','GoodLuck','Ok','CallMe','Yes','No','Peace','Heart','Bye','I','Smile']
+labels = ['ThumbsUp','Hello','ThumbsDown','God','ILoveYou','GoodLuck','Ok','CallMe','Yes','No','Peace','Water','Bye','I','Smile']
 print(labels)
 img_count = 210
 
