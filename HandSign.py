@@ -97,8 +97,8 @@ from tensorflow.keras.models import load_model
 from keras.models import model_from_json
 from tensorflow.keras.preprocessing.image import load_img, img_to_array
 
-cnnmodel = model_from_json(open('C:/PRANSHU/PROJECTS/Hand-Sign-Language-Classification/Saved Model/CNN_model.json','r').read())  
-cnnmodel.load_weights('C:/PRANSHU/PROJECTS/Hand-Sign-Language-Classification/Saved Model/CNN_model_Weights.h5')
+load_model = model_from_json(open('C:/PRANSHU/PROJECTS/Hand-Sign-Language-Classification/Saved Model/HandSignModel1.json','r').read())  
+load_model.load_weights('C:/PRANSHU/PROJECTS/Hand-Sign-Language-Classification/Saved Model/HandSignModel1_Weights.h5')
 print("------Saved Model Loaded------")
 #%%
 #Testing
