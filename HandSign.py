@@ -91,6 +91,7 @@ m_json = model.to_json()
 with open("HandSignModel1.json", "w") as json_file:  
     json_file.write(m_json)  
 model.save_weights("HandSignModel1_Weights.h5")
+
 # %%
 #Loading the Saved Model
 from tensorflow.keras.models import load_model
@@ -100,6 +101,7 @@ from tensorflow.keras.preprocessing.image import load_img, img_to_array
 load_model = model_from_json(open('C:/PRANSHU/PROJECTS/Hand-Sign-Language-Classification/Saved Model/HandSignModel1.json','r').read())  
 load_model.load_weights('C:/PRANSHU/PROJECTS/Hand-Sign-Language-Classification/Saved Model/HandSignModel1_Weights.h5')
 print("------Saved Model Loaded------")
+
 #%%
 #Testing
 def process_image(path):
@@ -110,7 +112,7 @@ def process_image(path):
     return img_tensor
 #%%
 #Testing
-path1 = 'C:/PRANSHU/PROJECTS/Hand-Sign-Language-Classification/TESTING_DATA/Bye200.jpg'
+path1 = 'C:/PRANSHU/PROJECTS/Hand-Sign-Language-Classification/TESTING_DATA/ILoveYou200.jpg'
 img_original1 = load_img(path1)
 imgplot = plt.imshow(img_original1)
 plt.show()
@@ -127,4 +129,4 @@ classes= {1: 'Bye', 2: 'CallMe', 3: 'God', 4: 'GoodLuck', 5: 'Hello', 6: 'I', 7:
 print("\n*****************************")
 print("Prediction: ",classes[np.argmax(pred1)+1])
 print("*****************************")
-#%%
+# %%
